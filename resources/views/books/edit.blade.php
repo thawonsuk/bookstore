@@ -2,11 +2,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md col-md-offset-2">
-<div class=" card-header h3 ">
-    เพิ่มข้อมูลรายการหนังสือ
-</div>
-@if (count($errors) > 0)
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="card mt-3">
+                <div class="card-header h3">
+                    แก้ไขข้อมูลหนังสือ{{ $book->title}}
+
+                </div>
+                <div class="card-body">
+                    @if (count($errors) > 0)
                     <div class="alert alert-warning">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -14,14 +17,13 @@
                         @endforeach</ul>
                     </div>
                     @endif
-<div class=" card-body">
-    {!! Form::open(array('url'=>'books','files'=>true)) !!}
+                    <?=Form::model($book, array('url'=>'books/'. $book->id, 'method' => 'put','files' => true)) ?>
     <div class="Form-group">
         <?=Form::label('title','ชื่อหนังสือ'); ?>
-        <?= Form::text('title',null,['class'=>'form-control','placeholder'=>'ชื่อหนังสือ']); ?>
+        <?= Form::text('title',null,['class'=>'form-control','placeholder'=>'เช่น100, 100.25']); ?>
     </div>
     <div class="Form-group">
-    <?=Form::label('price','ราคา'); ?>
+    <?=Form::label('price','ราคา');  ?>
         <?= Form::text('price',null,['class'=>'form-control','placeholder'=>'ราคาหนังสือ']); ?>
     </div>
     <div class=" form-group">
@@ -29,9 +31,12 @@
         <?=Form::select('typebooks_id',
         App\typebooks::all()->pluck('name','id'),null,['class'=>'form-control','placeholder'=>'เลือกประเภทหนังสือ']);?>
     </div>
+    <div>
+    <a herf="{{ asset('images/' .$book->image)}}"><img src="{{ asset('images/resize/' .$book->image) }}" style="width:100px"></a>
+    </div>
 
     <div class="form-group">
-        {!! Form::label('image','รูปภาพ');!!}
+        {!! Form::label('image','แก้ไขรูปภาพ');!!}
         <?=Form::file('image',null,['class'=>'form-control'])?>
     </div>
     <div class="form-group">
@@ -43,7 +48,8 @@
     </div>
 
     </div>
-
+</div>
+</div>
 
 @endsection
 

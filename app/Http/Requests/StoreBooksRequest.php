@@ -13,7 +13,7 @@ class StoreBooksRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     
@@ -26,7 +26,19 @@ class StoreBooksRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required',
+            'price' => 'required',
+            'typebooks_id' => 'required',
+            'image' => 'mimes:jpeg,jpg,png',
+
+        ];
+    }
+    public function messages(){
+        return [
+            'title.required' => 'กรุณากรอกชื่อหนังสือ',
+            'price.required' => 'กรุณากรอกราคา',
+            'typrebooks_id.required' => 'กรุณาเลือกหมวดหนังสือ',
+            'image.mimes' => 'กรุณาเลือกไฟล์ภาพนามสกุล jpeg,jpeg,png',
         ];
     }
 }

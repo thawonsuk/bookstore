@@ -37,7 +37,7 @@ class StoreBooksRequest extends FormRequest
         return [
             'title.required' => 'กรุณากรอกชื่อหนังสือ',
             'price.required' => 'กรุณากรอกราคา',
-            'typrebooks_id.required' => 'กรุณาเลือกหมวดหนังสือ',
+            'typebooks_id.required' => 'กรุณาเลือกหมวดหนังสือ',
             'image.mimes' => 'กรุณาเลือกไฟล์ภาพนามสกุล jpeg,jpeg,png',
         ];
     }

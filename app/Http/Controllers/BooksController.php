@@ -98,9 +98,9 @@ class BooksController extends Controller
                 File::delete(public_path() . '\\images\\' . $book->image);
                 File::delete(public_path() . '\\images\\resize\\' . $book->image);
             }
-                $filename = str_random(10).'.'.$request->file('image')->getClientOriginalExtension();
-                $request->file('image')->move(public_path().'/images/',$filename);
-                image::make(public_path().'*images/' .$filename)->resize(50, 50)->save(public_path().'/images/resize/'.$filename);
+            $filename = str_random(10).'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path().'/images/',$filename);
+            image::make(public_path().'/images/' .$filename)->resize(50, 50)->save(public_path().'/images/resize/'.$filename);
                 $book->image = $filename;
         }
             $book->save();

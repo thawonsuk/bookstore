@@ -28,7 +28,10 @@
                             <td>{{$book->title}} </td>
                             <td>{{number_format($book->price,2)}} </td>
                             <td>{{$book->typebooks->name}} </td>
-                            <td><a href="{{asset('images/'.$book->image) }}" data-lity><img src="{{asset('images/resize/'.$book->image)}}" style="width:50px"></a></td>
+                            <td>
+
+                                <a href="{{asset('images/'.$book->image) }}" data-lity><img src="{{asset('images/resize/'.$book->image)}}" style="width:50px"></a>
+                            </td>
                             <td>
                             <a href="{{ url('/books/'.$book->id.'/edit')}}">แก้ไข</a>
                             </td>
@@ -48,4 +51,20 @@
 </div>
 </div>
 @endsection
+@section('footer')
+@if (session()->has('status'))
+<script>
+    swal({
+        title:"<?php echo session()->get('status'); ?>",
+
+        text: "",
+        timer:2000,
+        type:'success',
+        showConfirmButton: fale
+
+    });
+    </script>
+    @endif
+    @endsection
+
 

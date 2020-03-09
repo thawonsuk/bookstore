@@ -53,6 +53,9 @@ class BooksController extends Controller
             $book->image = 'nopic.jpg';
         }
         $book->save();
+
+        $request->session()->flash('status','บันทึกข้อมูลเรียบร้อย');
+        //กำหนด key ของ flash data ชื่อว่า status โดยใส่ค่าข้อมูลคำว่า บันทึกข้อมูลเรียบร้อยแล้ว
         return redirect()->action('BooksController@index');
         }
 

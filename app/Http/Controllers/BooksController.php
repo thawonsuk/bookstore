@@ -10,6 +10,14 @@ use File;
 
 class BooksController extends Controller
 {
+    public function _construct(){
+        $this->middleware('auth', ['except'=>['index']]);
+        //$this->middleware('auth', ['except'=>['index','create','store']]);
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -129,4 +137,5 @@ class BooksController extends Controller
             return redirect()->action('BooksController@index');
             }
         }
+
 
